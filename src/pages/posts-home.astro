@@ -1,0 +1,10 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+const posts = await Astro.glob('../pages/post/*.md');
+---
+<SiteLayout title="Posts">
+    <p>Post Archive:</p>
+    <ul>
+        {posts.map(post => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+    </ul>
+</SiteLayout>

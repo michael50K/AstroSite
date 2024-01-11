@@ -1,0 +1,51 @@
+:root {
+    /* Color palette */
+    --accent: #ffb879 ;
+    --accent-light:  #fcef8d ;
+    --accent-dark:  #a32858;
+    --text-color:  #ffffff ;
+    --background-color:  #1f102a;
+    --button-bg:  #390947;
+    --accent-gradient: linear-gradient(
+        45deg,
+        var(--accent),
+        var(--accent-light) 30%,
+        var(--text-color) 60%
+    );
+}
+
+html {
+    font-family: system-ui, sans-serif;
+    background: var(--background-color);
+    background-size: 224px;
+}
+
+main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: var(--text-color);
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+code {
+    font-family:
+        Menlo,
+        Monaco,
+        Lucida Console,
+        Liberation Mono,
+        DejaVu Sans Mono,
+        Bitstream Vera Sans Mono,
+        Courier New,
+        monospace;
+}
