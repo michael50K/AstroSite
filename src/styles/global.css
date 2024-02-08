@@ -1,30 +1,56 @@
+
+@font-face {
+    font-family: 'Iosevka';
+    src: url('/fonts/Iosevka-Regular.ttc') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Iosevka';
+    src: url('/fonts/Iosevka-Light.ttc') format('truetype');
+    font-weight: light;
+    font-style: normal;
+    font-display: swap;
+}
+
+
 :root {
+    /* BASE COLOR PALETTE 
+     #BBCEA8 Celadon
+     #0A090C Night
+     #07393C Midnight Green
+     #2C666E Caribbean Current
+     #DE6B48 Burnt Sienna -> #ECAB98 Melon
+    */
+
     /* Color palette */
-    --accent: #ffb879 ;
-    --accent-light:  #fcef8d ;
-    --accent-dark:  #a32858;
-    --text-color:  #ffffff ;
-    --background-color:  #1f102a;
-    --button-bg:  #390947;
+    --accent: #ababab;
+    --accent-light:  #bdbdbd;
+    --accent-dark:  #9b9b9b;
+    --text-color:  #181818;
+    --background-color: #e7e7e7;
+    --focus:  #383838;
+    --focus-dark:  #282828;
     --accent-gradient: linear-gradient(
         45deg,
         var(--accent),
-        var(--accent-light) 30%,
-        var(--text-color) 60%
+        var(--accent-light) 60%
     );
 }
 
 html {
-    font-family: system-ui, sans-serif;
+    font-family: 'Iosevka', system-ui, serif;
     background: var(--background-color);
     background-size: 224px;
+}
+body {
+    margin: 0;
 }
 
 main {
     margin: auto;
-    padding: 1rem;
-    width: 800px;
-    max-width: calc(100% - 2rem);
+    max-width: 50%;
     color: var(--text-color);
     font-size: 20px;
     line-height: 1.6;
@@ -35,7 +61,6 @@ h1 {
     font-weight: 700;
     line-height: 1;
     text-align: center;
-    margin-bottom: 1em;
 }
 
 code {
