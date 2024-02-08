@@ -50,7 +50,7 @@ body {
 
 main {
     margin: auto;
-    max-width: 50%;
+    max-width: 500px;
     color: var(--text-color);
     font-size: 20px;
     line-height: 1.6;
