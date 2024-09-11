@@ -1,0 +1,29 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import GameDetails from "@layouts/GameDetails.astro";
+
+export interface Props {
+  game: CollectionEntry<"games">;
+}
+
+export async function getStaticPaths() {
+  const games = await getCollection("games", ({ data }) => !data.draft);
+
+  const gameResult = games.map(game => ({
+    params: { slug: game.slug },
+    props: { game },
+  }));
+
+  const gamePaths = games.map(game => ({
+    params: { slug: String(game) },
+  }));
+
+  return [...gameResult, ...gamePaths];
+}
+
+const { slug } = Astro.params;
+const { game } = Astro.props;
+
+const games = await getCollection("games");
+---
+<GameDetails game={game} />

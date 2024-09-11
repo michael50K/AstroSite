@@ -1,0 +1,31 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Pagination from "@components/Pagination.astro";
+import GameCard from "@components/GameCard";
+import { SITE } from "@config";
+
+export interface Props {
+  games: CollectionEntry<"games">[];
+}
+
+const { games } = Astro.props;
+---
+
+<Layout title={`Games | ${SITE.title}`}>
+  <Header activeNav="games" />
+  <Main pageTitle="Games" pageDesc="All the games I've worked on">
+    <ul>
+      {
+        games.map(({slug, data}) => (
+          <GameCard href={`/games/${slug}/`} frontmatter={data} />
+        ))
+      }
+    </ul>
+  </Main>
+
+  <Footer/>
+</Layout>
