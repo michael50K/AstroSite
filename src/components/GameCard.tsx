@@ -1,14 +1,15 @@
 import { slugifyStr } from "@utils/slugify";
 import type { CollectionEntry } from "astro:content";
+import EyeIcon from "@components/EyeIcon";
 
 export interface Props {
   href?: string;
-  frontmatter: CollectionEntry<"games">["data"];
+  frontmatter: CollectionEntry<"games">["data"] & { views?: number };
   secHeading?: boolean;
 }
 
 export default function GameCard({ href, frontmatter, secHeading = true }: Props) {
-  const { title, pubDatetime, modDatetime, description } = frontmatter;
+  const { title, pubDatetime, modDatetime, description, coverImage } = frontmatter;
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
@@ -26,8 +27,15 @@ export default function GameCard({ href, frontmatter, secHeading = true }: Props
         ) : (
           <h3 {...headerProps}>{title}</h3>
         )}
+        {coverImage && (
+          <img src={coverImage} alt={title} className="my-4 w-full h-auto max-h-64 object-cover" />
+        )}
       </a>
       <p>{description}</p>
+      <div className="flex items-center mt-2">
+        <EyeIcon />
+        <span className="ml-1">{frontmatter.views} views</span>
+      </div>
     </li>
   );
 }

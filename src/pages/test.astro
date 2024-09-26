@@ -1,0 +1,25 @@
+---
+import { SITE } from "@config";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+//import WheelComponent from "@components/test/WheelA";
+import WheelComponent from "@components/test/WheelB"
+---
+
+<Layout title={`test page | ${SITE.title}`}>
+  <Header />
+
+  <main id="main-content">
+    <div>
+      <WheelComponent client:load numSpins={5} onSpinEnd={(result) => console.log('Result:', result)} />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+<style>
+  #main-content {
+    @apply mx-auto flex max-w-3xl flex-1 items-center justify-center;
+  }
+</style>
