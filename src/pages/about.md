@@ -19,26 +19,32 @@ Here are some examples of the languages and technologies I've worked with:
 | `django` | Monogame/XNA | node backend | GDScript
 
 Outside of work I like to play guitar, work on hobbyist electronics, make and play games. If your interested in collaborating on anything, feel free to reach out!
-For that and any other inquires reach out to [EMAIL ON RESUME].
+___
 
-## Employment History
+## Experience
+_Please contact me for my full resume_
 
-### 2024 AI Training Consultant
+### 2024 
+#### Game Developer
+_[Swan Crypt](/games/swan-crypt), multiple game jam titles_
+
+#### AI Trainer
 _Freelance_
 
-### 2021-2023 Data Scientist 
+### 2021-2023 
+#### Data Scientist 
 _Expression Networks_
 
-### 2017-2021 Penn State University
+### 2017-2021 
+#### Penn State University
 _BS in Computer Science_
 _Minor in Mathematics_
 
-### 2020 Machine Learning Intern
+### 2020 
+#### Machine Learning Intern
 _Argo AI_
 
-### 2019 Computer Science Intern 
+### 2019 
+#### Computer Science Intern 
 _Penn State ARL_
 
-
-___ 
-_Please reach out for my full resume to get more details on my previous work_

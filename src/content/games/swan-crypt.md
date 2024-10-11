@@ -1,15 +1,17 @@
 ---
 updateDatetime: 2024-09-06T00:00:00-04:00
-title: My Most Popular Game
+title: Swan Crypt
 slug: swan-crypt
 featured: true
+status: demo
 draft: false
 tags:
   - game
   - roguelike
   - free
 description:
-  A game with a lot of views
+  A turn-based dungeon crawler where you play as a magical swan
+coverImage: /assets/swan_crypt_cover.png
 itchIoId: 2952259
 ---
 

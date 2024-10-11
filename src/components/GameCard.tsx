@@ -1,6 +1,7 @@
 import { slugifyStr } from "@utils/slugify";
 import type { CollectionEntry } from "astro:content";
 import EyeIcon from "@components/EyeIcon";
+import Datetime from "./Datetime";
 
 export interface Props {
   href?: string;
@@ -9,7 +10,7 @@ export interface Props {
 }
 
 export default function GameCard({ href, frontmatter, secHeading = true }: Props) {
-  const { title, pubDatetime, modDatetime, description, coverImage } = frontmatter;
+  const { title, updateDatetime, description, coverImage } = frontmatter;
 
   const headerProps = {
     style: { viewTransitionName: slugifyStr(title) },
@@ -20,22 +21,32 @@ export default function GameCard({ href, frontmatter, secHeading = true }: Props
     <li className="my-6">
       <a
         href={href}
-        className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
+        className="flex items-start justify-between"
       >
-        {secHeading ? (
-          <h2 {...headerProps}>{title}</h2>
-        ) : (
-          <h3 {...headerProps}>{title}</h3>
-        )}
+        {/* Left side: Datetime and description */}
+        <div className="flex-1 mr-4">
+          {secHeading ? (
+            <h2 {...headerProps} className="text-lg font-medium text-skin-accent">
+              {title}
+            </h2>
+          ) : (
+            <h3 {...headerProps} className="text-lg font-medium text-skin-accent">
+              {title}
+            </h3>
+          )}
+          <Datetime showTime={false} pubDatetime={updateDatetime} modDatetime={undefined} />
+          <p className="mt-2">{description}</p>
+        </div>
+  
+        {/* Right side: Image */}
         {coverImage && (
-          <img src={coverImage} alt={title} className="my-4 w-full h-auto max-h-64 object-cover" />
+          <img
+            src={coverImage}
+            alt={title}
+            className="w-1/3 h-auto object-cover max-h-64"
+          />
         )}
       </a>
-      <p>{description}</p>
-      <div className="flex items-center mt-2">
-        <EyeIcon />
-        <span className="ml-1">{frontmatter.views} views</span>
-      </div>
     </li>
   );
 }

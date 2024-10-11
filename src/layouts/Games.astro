@@ -10,43 +10,57 @@ import { SITE } from "@config";
 
 export interface Props {
   games: CollectionEntry<"games">[];
+  title?: string;
+  description?: string;
 }
 
-const response = await fetch(`https://itch.io/api/1/<API_KEY_REDACTED>/my-games`);
-const { games: itchGames } = await response.json();
-
-const gamesWithViews = Astro.props.games.map(game => {
-  const itchGame = itchGames.find((g: any) => g.id === game.data.itchIoId);
-  return {
-    ...game,
-    data: {
-      ...game.data,
-      views: itchGame ? itchGame.views_count : 0
+const sortedGames = Astro.props.games
+  .sort((gameA, gameB) => {
+    if (gameA.data.featured === gameB.data.featured) {
+      // Ensure updateDatetime is a valid Date and get the timestamp for comparison
+      return new Date(gameB.data.updateDatetime).getTime() - new Date(gameA.data.updateDatetime).getTime();
     }
-  };
-});
+    // Sort by featured, where true comes before false
+    return gameB.data.featured ? 1 : -1;
+  })
+  .map(game => ({
+    slug: game.slug,
+    data: game.data
+  }));
 
-gamesWithViews.sort((a, b) => (b.data.views || 0) - (a.data.views || 0));
+const demoGames = sortedGames.filter(game => game.data.status == "demo")
 
-const sortedGames = gamesWithViews.map(game => ({
-  slug: game.slug,
-  data: game.data
-}));
-
-const { games: sortedGamesProps } = { games: sortedGames };
+const jamGames = sortedGames.filter(game => game.data.status == "jam")
 ---
 
 <Layout title={`Games | ${SITE.title}`}>
   <Header activeNav="games" />
-  <Main pageTitle="Games" pageDesc="All the games I've worked on">
+  <Main pageTitle="Games" pageDesc="">
+    <h2>Demos</h2>
+    <i>Fully playable demos for the games that I'm developing</i>
     <ul>
       {
-        sortedGamesProps.map(({slug, data}) => (
+        demoGames.map(({slug, data}) => (
+          <GameCard href={`/games/${slug}/`} frontmatter={data} />
+        ))
+      }
+    </ul>
+    <h2>Jams</h2>
+    <i>Small creative game prototypes I've made for game jam competitions, or just to test out game ideas</i>
+    <ul>
+      {
+        jamGames.map(({slug, data}) => (
           <GameCard href={`/games/${slug}/`} frontmatter={data} />
         ))
       }
     </ul>
   </Main>
-
   <Footer/>
 </Layout>
+
+<style>
+  h2 {
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+</style>

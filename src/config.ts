@@ -7,7 +7,7 @@ export const SITE: Site = {
   desc: "",
   title: "Michael Kelly",
   ogImage: "astropaper-og.jpg",
-  lightAndDarkMode: false,
+  lightAndDarkMode: true,
   postPerIndex: 4,
   postPerPage: 3,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
@@ -46,9 +46,9 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "LinkedIn",
-    href: "https://github.com/satnaing/astro-paper",
+    href: "https://www.linkedin.com/in/michael-kelly-3757ab12b/",
     linkTitle: `${SITE.title} on LinkedIn`,
-    active: false,
+    active: true,
   },
   {
     name: "Mail",
